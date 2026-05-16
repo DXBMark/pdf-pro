@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-pro"
+version = "0.1.0"
+description = "Professional PDF workflow helpers for AI skills, coding agents, CLI automation, and visual PDF validation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Tariq Said" }
+]
+keywords = ["pdf", "chatgpt-skill", "claude-skills", "cli", "document-automation", "validation"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Office/Business",
+  "Topic :: Text Processing"
+]
+dependencies = []
+
+[project.optional-dependencies]
+pdf = [
+  "pypdf",
+  "pymupdf",
+  "reportlab"
+]
+dev = [
+  "pytest"
+]
+
+[project.scripts]
+pdf-pro = "pdf_pro.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

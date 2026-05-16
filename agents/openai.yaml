@@ -1,5 +1,5 @@
 interface:
-  display_name: "PDF Skill."
-  short_description: "Create, edit, and review PDFs."
+  display_name: "PDF Pro"
+  short_description: "Create, edit, review, validate, and visually improve PDFs."
   icon_large: "./assets/pdf.png"
-  default_prompt: "Create, edit, or review this PDF and summarize the key output or changes."
+  default_prompt: "Create, edit, inspect, validate, or visually improve this PDF and summarize the completed checks."

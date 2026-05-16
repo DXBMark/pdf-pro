@@ -130,3 +130,32 @@ When delivering a finished PDF, include:
 2. A brief summary of what was created or changed.
 3. What validation was completed.
 4. Any limitations, such as scanned pages, OCR uncertainty, missing fonts, unavailable source files, or third-party service dependency.
+
+
+## Package validation
+
+For repository or release validation, run:
+
+```bash
+python scripts/validate_package.py .
+python -m compileall scripts src
+```
+
+If installed as a package, also run:
+
+```bash
+pdf-pro --help
+pdf-pro validate --help
+```
+
+## CLI validation
+
+For CLI-generated PDFs, include the command used and the validation result in the delivery summary. Prefer writing validation outputs to `validation/<document-name>/`.
+
+Recommended pattern:
+
+```bash
+pdf-pro inspect input.pdf
+pdf-pro <operation> input.pdf --out output.pdf
+pdf-pro validate output.pdf --render --extract-text --out-dir validation/output --text-out validation/output.txt
+```

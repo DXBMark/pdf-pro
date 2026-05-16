@@ -2,36 +2,59 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![ChatGPT Skill](https://img.shields.io/badge/ChatGPT-Skill-blue)
+![Claude Ready](https://img.shields.io/badge/Claude-Adaptable-purple)
+![CLI Ready](https://img.shields.io/badge/CLI-VSCode%20%7C%20Claude%20Code%20%7C%20Copilot-green)
 ![PDF Workflow](https://img.shields.io/badge/PDF-Workflow-red)
-![Python](https://img.shields.io/badge/Python-3.x-green)
+![Python](https://img.shields.io/badge/Python-3.10%2B-green)
 
-**PDF Pro** is a professional ChatGPT Skill for production-ready PDF workflows.
+**PDF Pro** is a production-ready PDF workflow package for AI assistants and local automation.
 
-It helps ChatGPT create, edit, inspect, extract, validate, and visually improve PDF files using a structured verification-first process. The skill is designed for workflows where the final PDF must be usable, visually checked, accurate, and ready to share.
+It is designed first as a **ChatGPT Skill** and structured to be adaptable for **Claude Skills**, **Claude Code**, **Gemini Gems**, **VSCode**, **GitHub Copilot**, **Antigravity**, and other coding-agent or CLI workflows.
 
-PDF Pro combines practical PDF operations with structured design guidance inspired by UI/UX Pro Max, helping produce documents that are not only technically correct but also clear, readable, and visually polished.
+PDF Pro helps assistants and developers create, edit, inspect, extract, render, validate, redact, and visually improve PDF files through a verification-first process. It combines practical PDF operations with design-system guidance so final documents are usable, visually checked, accurate, and ready to share.
 
 ---
 
-## What this skill supports
+## Repository description
 
-PDF Pro supports a wide range of professional PDF tasks, including:
+A professional AI workflow package for creating, editing, reviewing, extracting, validating, redacting, and visually improving production-ready PDF files across ChatGPT Skills, Claude Skills, and CLI-based coding agents.
+
+---
+
+## What this package supports
 
 - Creating new PDFs from structured content.
-- Editing existing PDFs through safe operations such as merge, split, rotate, watermark, and extraction.
+- Creating polished visual PDFs from JSON specifications.
+- Editing existing PDFs through safe operations such as merge, split, rotate, crop, watermark, redaction, and extraction.
 - Reviewing PDFs by inspecting metadata, page count, encryption status, page sizes, rotation, and text layer availability.
 - Rendering PDF pages to PNG for visual verification.
 - Extracting text from selectable-text PDFs.
+- Validating final PDF outputs before delivery.
+- Checking required and forbidden phrases during validation.
 - Applying professional visual design rules for client-facing PDFs.
-- Creating polished reports, handouts, one-pagers, certificates, dashboards, worksheets, and branded documents.
-- Running a validation protocol before delivery.
-- Reporting limitations clearly, especially when working with scanned pages, missing fonts, OCR uncertainty, or poor source quality.
+- Supporting local CLI workflows for editors and coding agents.
+- Providing platform guidance for ChatGPT, Claude, Gemini, Copilot, Antigravity, and local assistants.
+
+---
+
+## Platform compatibility
+
+| Target | Status | How to use |
+|---|---:|---|
+| ChatGPT Skills | Direct support | Use the root `SKILL.md`, `agents/openai.yaml`, `references/`, `scripts/`, and `assets/` |
+| Claude Skills | Adaptable | Use `CLAUDE.md` or `platforms/claude.md` with the same scripts and references |
+| Claude Code | CLI-ready | Use `AGENTS.md`, `CLI.md`, and terminal commands |
+| VSCode | CLI-ready | Use `.vscode/tasks.json` or integrated terminal commands |
+| GitHub Copilot | CLI-ready | Use `AGENTS.md`, `CLI.md`, and repo scripts as project context |
+| Antigravity | CLI-ready | Use `AGENTS.md`, `CLI.md`, and `references/cli-integration.md` |
+| Gemini Gems | Instruction/reference adaptation | Use `GEMINI.md` and `platforms/gemini.md` |
+| Local LLM agents | Adaptable | Load `AGENTS.md`, `SKILL.md`, `references/`, and run the CLI locally |
+
+Compatibility depends on whether the target platform supports instruction files, uploaded references, filesystem access, and code execution.
 
 ---
 
 ## Designed for
-
-PDF Pro is suitable for:
 
 - Client-facing reports
 - Branded PDF documents
@@ -46,6 +69,7 @@ PDF Pro is suitable for:
 - PDF extraction workflows
 - Safe PDF editing workflows
 - Visual review before final delivery
+- Editor-based automation in VSCode, Claude Code, Copilot, and Antigravity
 
 ---
 
@@ -56,10 +80,10 @@ PDF Pro follows a production-style workflow:
 1. Identify the PDF task.
 2. Inspect or render the input where needed.
 3. Choose the safest authoring or editing method.
-4. Perform the operation.
+4. Perform the smallest safe operation.
 5. Inspect or render the output.
 6. Validate the final file.
-7. Deliver the PDF with a clear summary of what was done and what was verified.
+7. Deliver the PDF with a clear summary of what was done, what was verified, and any limitation.
 
 The goal is to avoid treating PDF work as a one-step file operation. Every final PDF should be checked before delivery.
 
@@ -83,166 +107,180 @@ pdf-pro/
 ├── README.md
 ├── LICENSE
 ├── NOTICE.md
+├── AGENTS.md
+├── CLAUDE.md
+├── GEMINI.md
+├── CLI.md
+├── pyproject.toml
 ├── agents/
 │   └── openai.yaml
 ├── assets/
 │   ├── design-tokens-starter.json
 │   └── pdf.png
+├── examples/
+│   └── visual-spec.json
+├── platforms/
+│   ├── chatgpt.md
+│   ├── claude.md
+│   ├── gemini.md
+│   └── cli-agents.md
 ├── references/
 │   ├── pdf-workflows.md
 │   ├── quality-checklist.md
 │   ├── validation-protocol.md
-│   └── visual-design-system.md
-└── scripts/
-    ├── create_visual_pdf.py
-    ├── pdf_ops.py
-    └── validate_pdf.py
+│   ├── visual-design-system.md
+│   ├── cli-integration.md
+│   ├── platform-compatibility.md
+│   └── compatibility-checklist.md
+├── scripts/
+│   ├── create_visual_pdf.py
+│   ├── pdf_ops.py
+│   ├── validate_pdf.py
+│   └── validate_package.py
+├── src/
+│   └── pdf_pro/
+│       ├── __init__.py
+│       ├── cli.py
+│       ├── create_visual_pdf.py
+│       ├── pdf_ops.py
+│       └── validate_pdf.py
+└── tests/
+    └── test_cli_smoke.py
 ```
 
 ---
 
-## Main entry point
+## Main entry points
 
-[SKILL.md](SKILL.md) is the primary instruction file used by ChatGPT.
+### ChatGPT Skills
+
+[SKILL.md](SKILL.md) is the primary ChatGPT Skill instruction file.
 
 It defines:
 
 - When the skill should be used.
 - How PDF tasks should be classified.
 - Which workflows should be followed.
-- When to inspect, render, extract, edit, validate, or visually review a PDF.
-- How final outputs should be delivered to the user.
+- When to inspect, render, extract, edit, validate, redact, or visually review a PDF.
+- How final outputs should be delivered.
+
+### Claude Skills and Claude Code
+
+Use [CLAUDE.md](CLAUDE.md) and [platforms/claude.md](platforms/claude.md).
+
+### Gemini Gems
+
+Use [GEMINI.md](GEMINI.md) and [platforms/gemini.md](platforms/gemini.md).
+
+### CLI and coding agents
+
+Use [CLI.md](CLI.md), [AGENTS.md](AGENTS.md), and [references/cli-integration.md](references/cli-integration.md).
 
 ---
 
-## Helper scripts
+## Install for CLI use
 
-Run scripts from inside the `pdf-pro` folder, or pass absolute paths.
+From the repository root:
 
----
+```bash
+python -m pip install -e .
+```
 
-### Install optional dependencies
-
-The helper scripts may use common Python PDF packages depending on the operation.
+Install optional PDF dependencies:
 
 ```bash
 python -m pip install pypdf pymupdf reportlab
 ```
 
+Or install with the package extras:
+
+```bash
+python -m pip install -e ".[pdf]"
+```
+
 ---
 
-### Inspect a PDF
+## CLI examples
 
-Use this to check metadata, page count, encryption status, page sizes, rotation, and text availability.
+Inspect a PDF:
+
+```bash
+pdf-pro inspect input.pdf
+```
+
+Extract text:
+
+```bash
+pdf-pro extract-text input.pdf --out extracted.txt
+```
+
+Render pages for visual review:
+
+```bash
+pdf-pro render input.pdf --out-dir renders/input --dpi 160
+```
+
+Merge PDFs:
+
+```bash
+pdf-pro merge output.pdf first.pdf second.pdf
+```
+
+Split pages:
+
+```bash
+pdf-pro split input.pdf --pages 1-3,7 --out selected-pages.pdf
+```
+
+Rotate pages:
+
+```bash
+pdf-pro rotate input.pdf --pages 1,3-5 --angle 90 --out rotated.pdf
+```
+
+Crop pages:
+
+```bash
+pdf-pro crop input.pdf --box 36,36,559,806 --out cropped.pdf
+```
+
+Add a watermark:
+
+```bash
+pdf-pro watermark input.pdf --text "DRAFT" --out watermarked.pdf
+```
+
+Redact matched text:
+
+```bash
+pdf-pro redact input.pdf --text "Confidential" --out redacted.pdf
+```
+
+Validate a finished PDF:
+
+```bash
+pdf-pro validate output.pdf --expected-pages 5 --render --out-dir validation/output
+```
+
+Create a visual PDF from JSON:
+
+```bash
+pdf-pro visual examples/visual-spec.json --out output.pdf
+```
+
+---
+
+## Script examples
+
+The same operations are available without installing the package:
 
 ```bash
 python scripts/pdf_ops.py inspect input.pdf
-```
-
----
-
-### Extract text
-
-Use this for PDFs that contain a selectable text layer.
-
-```bash
-python scripts/pdf_ops.py extract-text input.pdf --out extracted.txt
-```
-
----
-
-### Render pages for visual review
-
-Use this when layout, tables, diagrams, scans, signatures, charts, or visual quality matter.
-
-```bash
 python scripts/pdf_ops.py render input.pdf --out-dir renders/input --dpi 160
-```
-
----
-
-### Merge PDFs
-
-Combine multiple PDF files into one output file.
-
-```bash
 python scripts/pdf_ops.py merge output.pdf first.pdf second.pdf
+python scripts/validate_pdf.py output.pdf --render --out-dir validation/output
+python scripts/create_visual_pdf.py examples/visual-spec.json --out output.pdf
 ```
-
----
-
-### Split pages
-
-Extract selected pages from a PDF.
-
-```bash
-python scripts/pdf_ops.py split input.pdf --pages 1-3,7 --out selected-pages.pdf
-```
-
----
-
-### Rotate pages
-
-Rotate selected pages by a specified angle.
-
-```bash
-python scripts/pdf_ops.py rotate input.pdf --pages 1,3-5 --angle 90 --out rotated.pdf
-```
-
----
-
-### Add a watermark
-
-Apply a text watermark to a PDF.
-
-```bash
-python scripts/pdf_ops.py watermark input.pdf --text "DRAFT" --out watermarked.pdf
-```
-
----
-
-### Validate a finished PDF
-
-Use this before delivering a final PDF.
-
-```bash
-python scripts/validate_pdf.py output.pdf --expected-pages 5 --render --out-dir validation/output
-```
-
-The validation script checks whether the file exists, opens successfully, has the expected page count when provided, exposes page dimensions and rotation, optionally extracts text statistics, and optionally renders pages for visual review.
-
----
-
-## Creating visual PDFs
-
-PDF Pro includes a helper script for generating polished fixed-layout PDFs from a structured JSON content specification.
-
-```bash
-python scripts/create_visual_pdf.py input.json --out output.pdf
-```
-
-This is useful for:
-
-- One-pagers
-- Certificates
-- Visual reports
-- Simple branded documents
-- Presentation-style PDF pages
-- Structured handouts
-
-For complex long-form documents, it is often better to author the content in DOCX or Markdown first, then convert and validate the final PDF.
-
----
-
-## External dependencies
-
-The helper scripts may use these Python libraries:
-
-- `pypdf` for metadata inspection, splitting, merging, rotation, watermark composition, and text extraction.
-- `PyMuPDF`, imported as `fitz`, for rendering PDF pages to images.
-- `reportlab` for fixed-layout PDF creation and watermark generation.
-
-These libraries are not bundled inside this skill. Their own licences apply when installed separately by the user or runtime environment.
 
 ---
 
@@ -255,32 +293,9 @@ Before a final PDF is delivered, verify at minimum:
 3. Page sizes and rotations are intentional.
 4. Text extraction is checked when text layer accuracy matters.
 5. Visual renders are checked for clipping, overlap, missing glyphs, weak contrast, and layout errors.
-6. Any limitation is stated clearly, especially scanned pages, OCR uncertainty, missing fonts, or source-file quality issues.
+6. Any limitation is stated clearly, especially scanned pages, OCR uncertainty, missing fonts, password protection, or poor source-file quality.
 
 See [references/validation-protocol.md](references/validation-protocol.md) for the full protocol.
-
----
-
-## Visual design guidance
-
-For visual or client-facing PDFs, PDF Pro uses design-system thinking inspired by UI/UX Pro Max.
-
-The design priorities are:
-
-1. Accessibility
-2. Readable typography
-3. Clear visual hierarchy
-4. Consistent spacing
-5. Strong alignment
-6. Sufficient contrast
-7. Predictable layout structure
-8. Purposeful use of colour
-9. Clean chart and table presentation
-10. Final visual verification through rendered page images
-
-The default visual standard is restrained, readable, accessible, and polished. Decoration should never make the document harder to scan.
-
-See [references/visual-design-system.md](references/visual-design-system.md) for the design guidance.
 
 ---
 
@@ -305,67 +320,39 @@ See [references/quality-checklist.md](references/quality-checklist.md) for the c
 
 ---
 
-## Safe editing principle
+## Redaction note
 
-PDF Pro prioritises safe operations.
+PDF Pro includes redaction workflow guidance and a text redaction command using a redaction-capable PDF engine where available. Do not treat a visual black box as safe redaction. True redaction must remove underlying text or pixels and must be verified through text extraction and rendering.
 
-For existing PDFs, the recommended process is:
-
-1. Inspect the file first.
-2. Render pages if the visual layout matters.
-3. Apply the smallest safe edit.
-4. Inspect and render the output.
-5. Summarise exactly what changed.
-
-For redaction, do not simply draw black rectangles over text. True redaction must remove the underlying text or pixels and then be verified by extraction and rendering.
+See [references/validation-protocol.md](references/validation-protocol.md) for redaction validation rules.
 
 ---
 
-## Example use cases
+## Package validation
 
-PDF Pro can help ChatGPT handle requests such as:
+Validate the repository structure:
 
-```text
-Create a polished PDF report from this content.
+```bash
+python scripts/validate_package.py .
 ```
 
-```text
-Inspect this PDF and tell me whether it has selectable text.
+Run smoke tests:
+
+```bash
+python -m pytest
 ```
 
-```text
-Merge these PDFs into one file and validate the result.
-```
+Compile Python files:
 
-```text
-Split pages 1 to 3 from this PDF.
-```
-
-```text
-Rotate pages 2 and 4 by 90 degrees.
-```
-
-```text
-Extract the text from this PDF.
-```
-
-```text
-Render this PDF so I can visually check the layout.
-```
-
-```text
-Create a branded certificate as a PDF.
-```
-
-```text
-Review this PDF for layout issues before I send it to a client.
+```bash
+python -m compileall scripts src
 ```
 
 ---
 
 ## Attribution note
 
-This skill includes original PDF workflow instructions authored for this package.
+This package includes original PDF workflow instructions authored for PDF Pro.
 
 Its visual design guidance is inspired by UI/UX Pro Max by NextLevelBuilder, which is identified as MIT-licensed. This package does not claim ownership of UI/UX Pro Max or its upstream project.
 

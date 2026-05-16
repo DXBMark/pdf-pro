@@ -82,3 +82,25 @@ Prefer source-native authoring when possible:
 - ReportLab/fixed-layout generation for deterministic programmatic documents.
 
 Always inspect the converted PDF for page breaks, missing fonts, glyph issues, and clipped text.
+
+
+## 8. CLI automation
+
+Use the CLI route when the user wants repeatable local automation, editor integration, batch processing, CI validation, or coding-agent execution.
+
+1. Confirm input and output paths.
+2. Prefer `pdf-pro` if the package is installed, otherwise use the scripts directly.
+3. Run a dry inspection command before destructive edits.
+4. Write outputs to a new file unless the user explicitly requests overwrite.
+5. Validate outputs with `pdf-pro validate` or `python scripts/validate_pdf.py`.
+6. Save renders and reports in a predictable validation directory.
+
+## 9. Coding-agent workflows
+
+For Claude Code, Copilot, Antigravity, VSCode agents, and local LLM agents:
+
+1. Load `AGENTS.md` and `CLI.md` first.
+2. Use `references/validation-protocol.md` before claiming completion.
+3. Keep all generated outputs outside source folders unless requested.
+4. Do not delete or overwrite source PDFs without an explicit instruction.
+5. Return the command run, output path, validation summary, and limitations.

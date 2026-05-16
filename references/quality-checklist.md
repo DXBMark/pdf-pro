@@ -45,3 +45,14 @@ Report:
 2. What was created or changed.
 3. Verification completed.
 4. Any limitation or follow-up needed.
+
+
+## CLI and platform checks
+
+- `python scripts/validate_package.py .` passes.
+- `python -m compileall scripts src` passes.
+- `pdf-pro --help` works after installation.
+- `python scripts/pdf_ops.py --help` works without package installation.
+- `python scripts/validate_pdf.py --help` works without package installation.
+- VSCode tasks are present when `.vscode/tasks.json` is included.
+- Platform notes exist for ChatGPT, Claude, Gemini, and CLI agents.
