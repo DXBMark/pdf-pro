@@ -13,12 +13,6 @@ PDF Pro combines practical PDF operations with structured design guidance inspir
 
 ---
 
-## Repository description
-
-A professional ChatGPT Skill for creating, editing, reviewing, extracting, validating, and visually improving production-ready PDF files.
-
----
-
 ## What this skill supports
 
 PDF Pro supports a wide range of professional PDF tasks, including:
@@ -77,7 +71,7 @@ The goal is to avoid treating PDF work as a one-step file operation. Every final
 - Licence: MIT
 - UI/UX Design Inspiration: UI/UX Pro Max by NextLevelBuilder, MIT Licence
 
-See `LICENSE` and `NOTICE.md` for the complete licence and attribution details.
+See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md) for the complete licence and attribution details.
 
 ---
 
@@ -109,7 +103,7 @@ pdf-pro/
 
 ## Main entry point
 
-`SKILL.md` is the primary instruction file used by ChatGPT.
+[SKILL.md](SKILL.md) is the primary instruction file used by ChatGPT.
 
 It defines:
 
@@ -263,7 +257,7 @@ Before a final PDF is delivered, verify at minimum:
 5. Visual renders are checked for clipping, overlap, missing glyphs, weak contrast, and layout errors.
 6. Any limitation is stated clearly, especially scanned pages, OCR uncertainty, missing fonts, or source-file quality issues.
 
-See `references/validation-protocol.md` for the full protocol.
+See [references/validation-protocol.md](references/validation-protocol.md) for the full protocol.
 
 ---
 
@@ -286,6 +280,8 @@ The design priorities are:
 
 The default visual standard is restrained, readable, accessible, and polished. Decoration should never make the document harder to scan.
 
+See [references/visual-design-system.md](references/visual-design-system.md) for the design guidance.
+
 ---
 
 ## Quality checklist
@@ -305,7 +301,7 @@ Before delivering a visual PDF, check:
 - The PDF opens successfully.
 - Rendered pages match the intended layout.
 
-See `references/quality-checklist.md` for the complete checklist.
+See [references/quality-checklist.md](references/quality-checklist.md) for the complete checklist.
 
 ---
 
@@ -367,33 +363,13 @@ Review this PDF for layout issues before I send it to a client.
 
 ---
 
-## Suggested GitHub topics
-
-```text
-chatgpt-skill
-pdf
-pdf-tools
-pdf-generation
-pdf-editing
-pdf-validation
-document-automation
-visual-design
-report-generation
-python
-pypdf
-pymupdf
-reportlab
-```
-
----
-
 ## Attribution note
 
 This skill includes original PDF workflow instructions authored for this package.
 
 Its visual design guidance is inspired by UI/UX Pro Max by NextLevelBuilder, which is identified as MIT-licensed. This package does not claim ownership of UI/UX Pro Max or its upstream project.
 
-See `NOTICE.md` for full attribution details.
+See [NOTICE.md](NOTICE.md) for full attribution details.
 
 ---
 
@@ -401,7 +377,7 @@ See `NOTICE.md` for full attribution details.
 
 This project is released under the MIT Licence.
 
-See `LICENSE` for details.
+See [LICENSE](LICENSE) for details.
 
 ---
 
