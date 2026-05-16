@@ -1,0 +1,15 @@
+# These are supported funding model platforms
+
+github: DXBMark
+
+# Optional external funding links
+# ko_fi: your-kofi-username
+# buy_me_a_coffee: your-buymeacoffee-username
+# patreon: your-patreon-username
+# open_collective: your-opencollective-username
+# polar: your-polar-username
+
+# Up to 4 custom sponsorship URLs are supported.
+# If a URL contains ":", wrap it in quotes.
+custom:
+  - "https://github.com/sponsors/DXBMark"
